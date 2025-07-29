@@ -3,17 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Try It Yourself Editor</title>
+  <title>Universal Code Editor</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+
 </head>
 <body class="flex h-screen bg-light text-dark" id="body">
+  <!-- LEFT SIDE -->
   <div class="w-1/2 flex flex-col overflow-hidden">
-    <div class="controls p-2">
+    <div class="controls p-2 flex gap-2">
+      <select id="language" class="select">
+        <option value="html">HTML</option>
+        <option value="javascript">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="python">Python</option>
+        <option value="c++">C++</option>
+        <option value="go">Go</option>
+        <option value="java">Java</option>
+      </select>
       <button id="run" class="btn">Run ▶</button>
-      <button id="toggleTheme" class="btn"> Dark Mode</button>
+      <button id="toggleTheme" class="btn">🌙 Dark Mode</button>
     </div>
 
-    <div id="editorContainer" class="editor-container">
+    <!-- HTML Mode: Multi-editor -->
+    <div id="html-editors" class="editor-container">
       <div class="editor-panel">
         <label class="label">HTML</label>
         <textarea id="html" class="editor"></textarea>
@@ -29,9 +42,20 @@
         <textarea id="js" class="editor"></textarea>
       </div>
     </div>
+
+    <!-- Generic Mode: Single editor -->
+    <div id="single-editor" class="flex-1 p-2 hidden">
+      <label class="label" id="lang-label">Code</label>
+      <textarea id="generic" class="editor" style="height: 100%;"></textarea>
+    </div>
   </div>
 
-  <iframe id="output" class="w-1/2 h-full border-left" sandbox="allow-scripts"></iframe>
+  <!-- RIGHT SIDE -->
+  <div class="w-1/2 h-full border-left p-2 overflow-auto">
+    <iframe id="output" class="w-full h-full" sandbox="allow-scripts"></iframe>
+    <pre id="raw-output" class="hidden"></pre>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
