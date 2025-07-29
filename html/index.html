@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Try It Yourself Editor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="flex h-screen bg-light text-dark" id="body">
+  <div class="w-1/2 p-2 flex-col gap-2 overflow-auto">
+    <div class="flex gap-2 mb-2">
+      <button id="run" class="btn">Run ▶</button>
+      <button id="toggleTheme" class="btn">🌙 Dark Mode</button>
+    </div>
+
+    <label class="label">HTML</label>
+    <textarea id="html" class="editor"></textarea>
+
+    <label class="label">CSS</label>
+    <textarea id="css" class="editor"></textarea>
+
+    <label class="label">JavaScript</label>
+    <textarea id="js" class="editor"></textarea>
+  </div>
+
+  <iframe id="output" class="w-1/2 h-full border-left" sandbox="allow-scripts"></iframe>
+
+  <script src="script.js"></script>
+</body>
+</html>
